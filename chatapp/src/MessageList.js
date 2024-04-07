@@ -1,6 +1,14 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 
+function Message({ index, text, sender }) {
+  return (
+    <Box key={index} className={`message ${sender}`}>
+      {text}
+    </Box>
+  );
+}
+
 export default function MessageList({ messages }) {
   const messageListRef = useRef(null);
 
@@ -13,10 +21,8 @@ export default function MessageList({ messages }) {
 
   return (
     <Box className="message-list" ref={messageListRef}>
-      {messages.map((message, index) => (
-        <Box key={index} className={`message ${message.sender}`}>
-          {message.text}
-        </Box>
+      {messages.map(({ text, sender }, index) => (
+        Message({ index, text, sender })
       ))}
     </Box>
   );
