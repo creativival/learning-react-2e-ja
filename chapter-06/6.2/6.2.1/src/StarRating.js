@@ -1,5 +1,5 @@
 import React from "react";
-import Star from "./Star";
+import Star from "../../../../color-sample/src/Star";
 
 export default function StarRating({ totalStars = 5, selectedStars = 0 }) {
   return (

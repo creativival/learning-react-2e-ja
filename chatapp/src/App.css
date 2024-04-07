@@ -1,0 +1,41 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #DCF8C6;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background-color: #F0F0F0;
+}
+
+.input-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.input-field {
+  flex: 1;
+  margin-right: 10px;
+}

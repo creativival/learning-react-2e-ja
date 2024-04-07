@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>React Samples</title></head>
+<body>
+<!-- 描画のルート -->
+<div id="root"></div>
+<!-- ReactとReactDOM(両方とも開発版) -->
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+</script>
+<script>
+  // ここにコードを記述する
+  // Reactのコンポーネントを定義
+  const items = [
+    "1 cup unsalted butter",
+    "1 cup crunchy peanut butter", "1 cup brown sugar",
+    "1 cup white sugar",
+    "2 eggs",
+    "2.5 cups all purpose flour", "1 teaspoon baking powder", "0.5 teaspoon salt"
+  ];
+
+  function IngredientsList({ items }) { return React.createElement(
+    "ul",
+    { className: "ingredients" },
+    items.map((ingredient, i) =>
+      React.createElement("li", { key: i }, ingredient)
+    )
+  ); }
+
+  ReactDOM.render(React.createElement(IngredientsList, { items }, null), document.getElementById("root")
+  );
+
+</script>
+</body>
+</html>
