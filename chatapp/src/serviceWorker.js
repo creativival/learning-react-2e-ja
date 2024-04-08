@@ -32,3 +32,46 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+export function register() {
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      navigator.serviceWorker
+        .register(swUrl)
+        .then((registration) => {
+          console.log('Service Worker registered:', registration);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+}
+
+export function unregister() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready
+      .then((registration) => {
+        registration.unregister();
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }
+}

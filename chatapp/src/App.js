@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
-import axios from 'axios';
 import './App.css';
 import MessageList from './MessageList';
 import InputField from './InputField';
@@ -19,7 +18,6 @@ const SYSTEM_CONTENT = `
 `.trim();
 
 function App() {
-  // console.log(apiKey);
   const [messages, setMessages] = useState([]);
 
   const handleSend = async (text) => {
